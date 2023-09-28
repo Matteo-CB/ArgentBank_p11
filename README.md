@@ -1,10 +1,10 @@
 # How to start the project ?
 
-## In the Back folder :
-
 Download [node.js](https://nodejs.org/en)
 
 Download [mongoDB](https://www.mongodb.com/try/download/community) and connect to mongodb://localhost:27017
+
+## In the Back folder :
 
 Use the command `npm i` then `npm run dev:server` in terminal
 
