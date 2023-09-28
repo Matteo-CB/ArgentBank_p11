@@ -2,6 +2,10 @@
 
 ## In the Back folder :
 
+Download [node.js](https://nodejs.org/en)
+
+Download [mongoDB](https://www.mongodb.com/try/download/community) and connect to mongodb://localhost:27017
+
 Use the command `npm i` then `npm run dev:server` in terminal
 
 ## in the Front folder :
