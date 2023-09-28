@@ -2,7 +2,7 @@
 
 Download [Node.js](https://nodejs.org/en)
 
-Download [MongoDB](https://www.mongodb.com/try/download/community) and connect to mongodb://localhost:27017
+Download [MongoDB](https://www.mongodb.com/try/download/community) and in MongoDB Compass connect to mongodb://localhost:27017
 
 ## In the Back folder :
 
