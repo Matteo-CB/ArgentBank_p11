@@ -1,123 +1,123 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
   title: Bank Argent API documentation
   description: Contains all available API endpoints in this codebase
-  version: '2.0.0'
-  termsOfService: 'http://swagger.io/terms/'
+  version: "2.0.0"
+  termsOfService: "http://swagger.io/terms/"
 host: localhost:3001
 basePath: /api/v1
 schemes:
   - http
 paths:
-  /store/transaction:
+  /account/transaction:
     post:
       security:
         - Bearer: []
       tags:
         - Transaction Module
-      summary: All transactions
-      description: API to get all transactions
+      summary: All transactions in an account
+      description: API to get all transactions in an account
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Transactions retrieved successully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
-    
-  /store/transaction:id:
+
+  /account/transaction:id:
     post:
       security:
         - Bearer: []
       tags:
         - Transaction Module
-      summary: See a transaction
-      description: API to see transaction information
+      summary: See a transaction in an account
+      description: API to see transaction information in an account
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Transaction information retrieved successully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
-    
-  /store/transaction:id/informations:id:
+
+  /account/transaction:id/informations:id:
     delete:
       security:
         - Bearer: []
       tags:
         - Transaction Module
-      summary: Delete some informations
-      description: API to delete transaction information
+      summary: Delete some informations in a transaction
+      description: API to delete transaction information in an account
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Transaction information deleted Successfully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
     put:
       security:
         - Bearer: []
       tags:
         - Transaction Module
-      summary: Update some informations
-      description: API to update transaction information
+      summary: Update some informations in a transaction
+      description: API to update transaction information in an account
       parameters:
         - in: body
           name: body
           description: Update transaction attributes
           required: true
           schema:
-            $ref: '#/definitions/Transaction'
+            $ref: "#/definitions/Transaction"
       produces:
         - application/json
       responses:
-        '200':
-          description: Transaction updated successfully
+        "200":
+          description: Transaction updated successfully in the account
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
-  /store/transaction:id/informations:
+  /account/transaction:id/informations:
     post:
       tags:
         - Transaction Module
       summary: Add information
-      description: API to add information to a transaction
+      description: API to add information to a transaction in an account
       parameters:
         - in: body
           name: body
           description: New transaction information
           required: true
           schema:
-            $ref: '#/definitions/Information'
+            $ref: "#/definitions/Information"
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Login Successfully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
-  
+
   /user/login:
     post:
       tags:
@@ -130,17 +130,17 @@ paths:
           description: Login Payload
           required: true
           schema:
-            $ref: '#/definitions/Login'
+            $ref: "#/definitions/Login"
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Login Successfully
           schema:
-            $ref: '#/definitions/LoginResponse'
-        '400':
+            $ref: "#/definitions/LoginResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
   /user/signup:
     post:
@@ -154,17 +154,17 @@ paths:
           description: Signup Payload
           required: true
           schema:
-            $ref: '#/definitions/User'
+            $ref: "#/definitions/User"
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Signup Successfully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
   /user/profile:
     post:
@@ -175,15 +175,15 @@ paths:
       summary: User Profile API
       description: API for fetching a user profile
       #produces:
-       # - application/json
+      # - application/json
       responses:
-        '200':
+        "200":
           description: User profile retrieved successfully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
     put:
       security:
@@ -198,17 +198,17 @@ paths:
           description: Update user profile attributes
           required: true
           schema:
-            $ref: '#/definitions/UserProfile'
+            $ref: "#/definitions/UserProfile"
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: User profile retrieved successfully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
 securityDefinitions:
   Bearer:
@@ -275,4 +275,3 @@ definitions:
     properties:
       newInformation:
         type: object
-

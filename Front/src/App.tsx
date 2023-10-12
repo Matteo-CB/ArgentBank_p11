@@ -14,18 +14,24 @@ const App = () => {
   }
   const isConnected = useSelector((state: any) => state.isConnected.value);
   const dispatch = useDispatch();
+  let token: string | null = null;
+  if (localStorage.getItem("token")) {
+    token = localStorage.getItem("token");
+  } else if (sessionStorage.getItem("token")) {
+    token = sessionStorage.getItem("token");
+  }
   if (
-    typeof localStorage.getItem("token") === "string" &&
+    typeof token === "string" &&
     isConnected === false
   ) {
     dispatch(toggleIsConnected());
     axios
       .post(
         "http://localhost:3001/api/v1/user/profile",
-        localStorage.getItem("token"),
+        token,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       )
@@ -46,11 +52,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn />} />
-        {isConnected ? (
-          <Route path="/profile" element={<User />} />
-        ) : (
-          <Route path="/profile" element={<SignIn />} />
-        )}
+        {isConnected && <Route path="/profile" element={<User />} />}
         <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>

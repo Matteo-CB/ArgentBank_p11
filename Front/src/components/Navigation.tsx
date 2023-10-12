@@ -5,21 +5,21 @@ import { removeData } from "../features/CurrentProfile/currentProfileSlice";
 import { toggleIsConnected } from "../features/IsConnected/isConnectedSlice";
 
 const Navigation = () => {
-  const isConnected: boolean = useAppSelector((state) => state.isConnected.value);
-  const profil = useSelector((state: any) => state.currentProfile.profil)
-  const dispatch = useDispatch()
-  localStorage.setItem('username', profil.firstName + profil.lastName)
-  function signOut(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void{
-    e.preventDefault()
-    dispatch(removeData())
-    dispatch(toggleIsConnected())
-    localStorage.clear()
+  const isConnected: boolean = useAppSelector(
+    (state) => state.isConnected.value
+  );
+  const profil = useSelector((state: any) => state.currentProfile.profil);
+  const dispatch = useDispatch();
+  localStorage.setItem("username", profil.firstName + profil.lastName);
+  function signOut(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
+    e.preventDefault();
+    dispatch(removeData());
+    dispatch(toggleIsConnected());
+    localStorage.clear();
+    sessionStorage.clear();
     setTimeout(() => {
-      
-      window.location.href='/'
+      window.location.href = "/";
     }, 1000);
-    
-    
   }
   return (
     <>
@@ -35,19 +35,29 @@ const Navigation = () => {
         {isConnected ? (
           <div>
             <NavLink className="main-nav-item" to="/profile">
-            {profil ? <><i className="fa fa-user-circle"></i>
-              <span>{` ${profil.firstName} ${profil.lastName}`}</span></> : ''}
+              {profil ? (
+                <>
+                  <i className="fa fa-user-circle"></i>
+                  <span>{` ${profil.firstName} ${profil.lastName}`}</span>
+                </>
+              ) : (
+                ""
+              )}
             </NavLink>
-            <NavLink className="main-nav-item" to="/" onClick={(e) => signOut(e)}>
+            <NavLink
+              className="main-nav-item"
+              to="/"
+              onClick={(e) => signOut(e)}
+            >
               <i className="fa fa-sign-out"></i>
               Sign Out
             </NavLink>
           </div>
         ) : (
           <div>
-            <NavLink className="main-nav-item" to={'/login'}>
+            <NavLink className="main-nav-item" to={"/login"}>
               <i className="fa fa-user-circle"></i>
-               Sign In
+              Sign In
             </NavLink>
           </div>
         )}
